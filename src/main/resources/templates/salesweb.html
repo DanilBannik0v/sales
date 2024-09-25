@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div>
+    <h1 align="center">TechIndustry</h1>
+</div>
+
+<div>
+    <p align="center">(workername) is working</p>
+</div>
+
+<div>
+    <div>
+        <table align="center">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sum</th>
+                <th>ReceiptDate</th>
+                <th>SaleDate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="sale : ${sales}">
+                <td><span th:text="${sale.getId()}"> Id </span></td>
+                <td><span th:text="${sale.getSum()}"> Sum </span></td>
+                <td><span th:text="${sale.getReceiptDate()}"> ReceiptDate </span></td>
+                <td><span th:text="${sale.getSaleDate()}"> SaleDate </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2>Create New Sale</h2>
+            <form th:action="@{/salesweb}" th:object="${request}" method="post" th:modelattribute>
+                <div class="form-row">
+                    <div class="col-md-6 form-group">
+                        <label>ID</label>
+                        <input type="number" class="form-control" th:field="*{id}">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>sum</label>
+                        <input type="number" class="form-control" th:field="*{sum}">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>receipt date</label>
+                        <input type="datetime-local" class="form-control" th:field="*{receiptDate}">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>sale date</label>
+                        <input type="datetime-local" class="form-control" th:field="*{saleDate}">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Save Sale</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
